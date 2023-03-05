@@ -7,7 +7,6 @@ from PIL import Image
 import gradio as gr
 import random
 import os
-os.system("pip install gradio")
 
 
 def run_cmd(command):
@@ -27,20 +26,16 @@ def inference(img, mode):
     run_cmd("rm -rf " + OUTPUT_DIR)
     run_cmd("mkdir " + INPUT_DIR)
     run_cmd("mkdir " + OUTPUT_DIR)
-    basewidth = 256
-    wpercent = (basewidth / float(img.size[0]))
-    hsize = int((float(img.size[1]) * float(wpercent)))
-    img = img.resize((basewidth, hsize), Image.ANTIALIAS)
-    img.save(INPUT_DIR + "1.jpg", "JPEG")
+    img.save(INPUT_DIR + "1.png", "PNG")
     if mode == "base":
         run_cmd("python inference_realesrgan.py -n RealESRGAN_x4plus -i " + INPUT_DIR + " -o " + OUTPUT_DIR)
     else:
         os.system("python inference_realesrgan.py -n RealESRGAN_x4plus_anime_6B -i " + INPUT_DIR + " -o " + OUTPUT_DIR)
-    return os.path.join(OUTPUT_DIR, "1_out.jpg")
+    return os.path.join(OUTPUT_DIR, "1_out.png")
 
 
 title = "Real-ESRGAN"
-description = "Gradio demo for Real-ESRGAN. To use it, simply upload your image, or click one of the examples to load them. Read more at the links below. Please click submit only once"
+description = "Real-ESRGAN超分辨率模型的Gradio Demo 一次请提交一张图片\n动漫插图等图片请选择anime\n其他图片请选择base"
 article = "<p style='text-align: center'><a href='https://arxiv.org/abs/2107.10833'>Real-ESRGAN: Training Real-World Blind Super-Resolution with Pure Synthetic Data</a> | <a href='https://github.com/xinntao/Real-ESRGAN'>Github Repo</a></p>"
 
 gr.Interface(
