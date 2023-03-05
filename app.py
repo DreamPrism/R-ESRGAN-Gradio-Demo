@@ -35,7 +35,7 @@ def inference(img, mode):
 
 
 title = "Real-ESRGAN"
-description = "Real-ESRGAN超分辨率模型的Gradio Demo 一次请提交一张图片\r\n动漫插图等图片请选择anime模式\r\n其他图片请选择base模式"
+description = "Real-ESRGAN超分辨率模型的Gradio Demo 一次请提交一张图片<br>动漫插图等图片请选择anime模式<br>其他图片请选择base模式"
 article = "<p style='text-align: center'><a href='https://arxiv.org/abs/2107.10833'>Real-ESRGAN: Training Real-World Blind Super-Resolution with Pure Synthetic Data</a> | <a href='https://github.com/xinntao/Real-ESRGAN'>Github Repo</a></p>"
 
 gr.Interface(
