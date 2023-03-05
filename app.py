@@ -7,11 +7,7 @@ from PIL import Image
 import gradio as gr
 import random
 import os
-os.system("pip install gradio==2.9b23")
-
-
-torch.hub.download_url_to_file(
-    'http://people.csail.mit.edu/billf/project%20pages/sresCode/Markov%20Random%20Fields%20for%20Super-Resolution_files/100075_lowres.jpg', 'bear.jpg')
+os.system("pip install gradio")
 
 
 def run_cmd(command):
@@ -21,13 +17,6 @@ def run_cmd(command):
     except KeyboardInterrupt:
         print("Process interrupted")
         sys.exit(1)
-
-
-run_cmd("wget https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth -P .")
-run_cmd("pip install basicsr")
-run_cmd("pip freeze")
-
-os.system("wget https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.2.4/RealESRGAN_x4plus_anime_6B.pth -P .")
 
 
 def inference(img, mode):
@@ -66,4 +55,4 @@ gr.Interface(
     examples=[
         ['bear.jpg', 'base'],
         ['anime.png', 'anime']
-    ]).launch()
+    ]).launch(share=True)
