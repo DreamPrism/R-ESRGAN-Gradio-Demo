@@ -40,9 +40,9 @@ article = "<p style='text-align: center'><a href='https://arxiv.org/abs/2107.108
 
 gr.Interface(
     inference,
-    [gr.inputs.Image(type="pil", label="Input"), gr.inputs.Radio(
+    [gr.inputs.components.Image(type="pil", label="Input"), gr.inputs.Radio(
         ["base", "anime"], type="value", default="anime", label="模式")],
-    gr.outputs.Image(type="file", label="Output"),
+    gr.outputs.components.File(type="file", label="output"),
     title=title,
     description=description,
     article=article).launch(share=True)
